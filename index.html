@@ -5,14 +5,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOCAL</title>
-  <link rel="icon" type="image/png" href="./assets/logo-light.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/tailwindcss-cdn@3.4.10/tailwindcss.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'ocr': ['OCR-A-Std', 'monospace'],
+            'ibm': ['IBM Plex Mono', 'monospace'],
+            'mono': ['Inter', 'serif'],
+          },
+        },
+      },
+      variants: {
+        extend: {
+          transform: ['hover', 'group-hover'],
+          scale: ['hover', 'group-hover'],
+          translate: ['hover', 'group-hover'],
+        }
+      }
+    }
+  </script>
+  <!-- Base styles -->
+  <style type="text/tailwind">
+    @layer components {
+            .card-hover {
+                @apply transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl;
+            }
+            .icon-hover {
+                @apply transition-colors duration-300 ease-in-out;
+            }
+        }
+    </style>
+  <!-- Custom styles -->
   <style>
     @tailwind base;
     @tailwind components;
@@ -58,29 +84,12 @@
       }
     }
 
-    .grid>* {
-      animation: fadeInUp 0.5s ease-out forwards;
-      opacity: 0;
-    }
-
-    .grid>*:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .grid>*:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .grid>*:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-
     .ocr {
       font-family: "OCR-A-Std";
     }
 
     body {
-      font-family: "Poppins";
+      font-family: "IBM Plex Mono";
     }
 
     @keyframes rotate-subtle {
@@ -93,44 +102,53 @@
       }
     }
 
-    .rotate-on-hover {
-      transform-origin: center;
-      transition: transform 0.3s;
+    .logo-rotate {
       animation: rotate-subtle 10s linear infinite;
     }
+
+    .card {
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
   </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-900 text-gray-100">
-  <nav class="w-full p-4 bg-gray-800 border-b border-gray-700">
+  <nav class="w-full p-4 bg-black bg-opacity-75 border-b border-gray-700">
     <div class="max-w-6xl mx-auto flex items-center gap-4">
-      <img src="./assets/logo-light.png" width="60px" class="transition-transform rotate-on-hover" />
+      <img src="./assets/logo-light.png" width="60px" class="transition-transform logo-rotate" />
       <h1 class="text-4xl font-bold text-white mt-2 ocr">DOCAL</h1>
     </div>
   </nav>
 
-  <main class="flex-grow px-6 py-12 bg-gray-900">
+  <main class="flex-grow px-6 py-12 bg-black bg-opacity-25">
     <h2
-      class="text-3xl lg:text-4xl font-bold text-center mb-12 bg-gradient-to-br from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      class="text-4xl lg:text-5xl font-bold text-center mb-12 bg-gradient-to-br from-gray-300 to-gray-200 bg-clip-text text-transparent font-mono">
       Decentralised Organisation<br />for Class-Action Lawsuits
     </h2>
 
     <div class="max-w-6xl mx-auto">
       <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Vision Card -->
-        <div
-          class="group bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="card bg-black bg-opacity-50 rounded-xl p-6 cursor-pointer transition-all duration-300">
           <div class="flex items-center mb-4">
             <div class="w-18 h-18 bg-transparent rounded-full flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" viewBox="0 0 24 24"
-                stroke="currentColor" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400 transition-colors duration-300"
+                viewBox="0 0 24 24" stroke="currentColor" fill="none">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold ml-4 text-blue-400">Our Vision</h3>
+            <h3 class="text-xl font-semibold ml-4 text-green-400 transition-colors duration-300">Our Vision</h3>
           </div>
-          <p class="text-gray-300">
+          <p class="text-gray-300 transition-colors duration-300">
             Empowering the Web3 community through collective legal action,
             ensuring accountability and fostering trust in the decentralised
             ecosystem.
@@ -138,19 +156,18 @@
         </div>
 
         <!-- Governance Card -->
-        <div
-          class="group bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="card bg-black bg-opacity-50 rounded-xl p-6 cursor-pointer transition-all duration-300">
           <div class="flex items-center mb-4">
             <div class="w-18 h-18 bg-transparent rounded-full flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" viewBox="0 0 24 24"
-                stroke="currentColor" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400 transition-colors duration-300"
+                viewBox="0 0 24 24" stroke="currentColor" fill="none">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold ml-4 text-green-400">Governance</h3>
+            <h3 class="text-xl font-semibold ml-4 text-green-400 transition-colors duration-300">Governance</h3>
           </div>
-          <p class="text-gray-300">
+          <p class="text-gray-300 transition-colors duration-300">
             Our decentralised governance model ensures transparent
             decision-making through community-driven proposals and voting
             mechanisms.
@@ -158,50 +175,51 @@
         </div>
 
         <!-- Technical Card -->
-        <div
-          class="group bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="card bg-black bg-opacity-50 rounded-xl p-6 cursor-pointer transition-all duration-300">
           <div class="flex items-center mb-4">
             <div class="w-18 h-18 bg-transparent rounded-full flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" viewBox="0 0 24 24"
-                stroke="currentColor" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400 transition-colors duration-300"
+                viewBox="0 0 24 24" stroke="currentColor" fill="none">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold ml-4 text-purple-400">Technical Framework</h3>
+            <h3 class="text-xl font-semibold ml-4 text-green-400 transition-colors duration-300">Technical Framework
+            </h3>
           </div>
-          <p class="text-gray-300">
+          <p class="text-gray-300 transition-colors duration-300">
             Built on the Solana-native Realms Protocol, with planned upgrades for
             custom electoral methods and optimal governance mechanisms.
           </p>
         </div>
       </section>
 
-      <section class="bg-gray-700 rounded-xl p-8 shadow-lg mb-12">
+      <!-- Approach Section -->
+      <section class="bg-black bg-opacity-50 rounded-xl p-8 shadow-lg mb-12 transition-shadow duration-300">
         <div class="flex items-center gap-3 mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-300" fill="none" viewBox="0 0 24 24"
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-300" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <h3 class="text-2xl font-semibold text-gray-300">Our Approach</h3>
+          <h3 class="text-2xl font-semibold text-green-400">Our Approach</h3>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="space-y-4">
+          <div class="card space-y-4 p-4 rounded-lg cursor-pointer">
             <div class="flex items-center gap-2 mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24"
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-300" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <h4 class="text-lg font-medium text-blue-300">Legal Defence Fund</h4>
+              <h4 class="text-lg font-medium text-green-300">Legal Defence Fund</h4>
             </div>
             <p class="text-gray-200">
               We maintain a community-controlled treasury dedicated to funding
               strategic legal actions that protect and advance Web3 interests.
             </p>
           </div>
-          <div class="space-y-4">
+          <div class="card space-y-4 p-4 rounded-lg cursor-pointer">
             <div class="flex items-center gap-2 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-300" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -219,7 +237,8 @@
         </div>
       </section>
 
-      <section class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-8 text-white">
+      <!-- Get Involved Section -->
+      <section class="bg-black bg-opacity-50 rounded-xl p-8 text-white">
         <div class="flex items-center gap-3 mb-6">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-100" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -229,7 +248,7 @@
           <h3 class="text-2xl font-semibold text-gray-100">Get Involved</h3>
         </div>
         <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white/10 rounded-lg p-6 backdrop-blur-lg">
+          <div class="card bg-white/10 rounded-lg p-6 backdrop-blur-lg cursor-pointer">
             <div class="flex items-center gap-2 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-100" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -243,7 +262,8 @@
               legal action.
             </p>
           </div>
-          <div class="bg-white/10 rounded-lg p-6 backdrop-blur-lg">
+
+          <div class="card bg-white/10 rounded-lg p-6 backdrop-blur-lg cursor-pointer">
             <div class="flex items-center gap-2 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-100" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -256,7 +276,7 @@
               Support ongoing cases and help build our legal defence treasury.
             </p>
           </div>
-          <div class="bg-white/10 rounded-lg p-6 backdrop-blur-lg">
+          <div class="card bg-white/10 rounded-lg p-6 backdrop-blur-lg cursor-pointer">
             <div class="flex items-center gap-2 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-100" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
