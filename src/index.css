@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "OCR-A-Std";
+  src: url("../public/fonts/OCR-A-Std.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF-Mono";
+  src: url("../public/fonts/SF-Mono-Round.woff2") format("woff2");
+  font-style: normal;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ocr {
+  font-family: "OCR-A-Std";
+}
+
+body {
+  font-family: "SF-Mono";
+}
+
+@keyframes rotate-subtle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-rotate {
+  animation: rotate-subtle 10s linear infinite;
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
