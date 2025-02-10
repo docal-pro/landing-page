@@ -1,3 +1,6 @@
 node_modules
 .env
 out
+.next
+.DS_Store
+**/.DS_Store
