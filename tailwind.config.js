@@ -8,6 +8,10 @@ export default {
         ibm: ["IBM Plex Mono", "monospace"],
         mono: ["Inter", "serif"],
       },
+      letterSpacing: {
+        tight: "-0.1em",
+        word: "-0.12em",
+      },
     },
   },
   plugins: [],
