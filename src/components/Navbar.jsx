@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, Github, Twitter } from 'lucide-react';
+import { Menu, X, ChevronDown, Github, Twitter, Send, CloudRain } from 'lucide-react';
 
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -98,6 +98,15 @@ export const Navbar = () => {
                                     <Twitter size={16} />
                                     X
                                 </a>
+                                <a
+                                    href=""
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 text-sm text-white hover:bg-gray-800 opacity-50 cursor-not-allowed"
+                                >
+                                    <Send size={16} />
+                                    Telegram
+                                </a>
                             </div>
                         </div>
 
@@ -118,11 +127,12 @@ export const Navbar = () => {
                                     } absolute left-0 mt-2 w-48 bg-black rounded-md shadow-lg py-1 z-50`}
                             >
                                 <a
-                                    href=""
+                                    href="http://ai.docal.pro"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 px-4 py-2 text-sm text-white hover:bg-gray-800"
                                 >
+                                    <CloudRain size={16} />
                                     DOCAL AI
                                 </a>
                             </div>

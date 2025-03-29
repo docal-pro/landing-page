@@ -7,6 +7,7 @@ export default {
         ocr: ["OCR-A-Std", "monospace"],
         ibm: ["IBM Plex Mono", "monospace"],
         mono: ["Inter", "serif"],
+        code: ["SF-Mono", "monospace"],
       },
       letterSpacing: {
         tight: "-0.1em",
